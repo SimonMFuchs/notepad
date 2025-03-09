@@ -1,7 +1,12 @@
 *{
     box-sizing: border-box;
-    margin: 0;
     scroll-behavior: smooth;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(30, 30, 30);
+    color: rgb(186, 246, 186);
 }
 
 a {
