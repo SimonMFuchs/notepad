@@ -4,10 +4,18 @@ function renderNotes() {
 
     let contentRef = document.getElementById('content');
 
-    contentRef.innerHTML = notes;
+    contentRef.innerHTML = "";
+
+    for (let indexNote = 0; indexNote < notes.length; indexNote++) {
+        const note = notes[indexNote];
+        contentRef.innerHTML += getNotesHtmlTemplate(indexNote);
+    }
 }
 
-
+function getNotesHtmlTemplate(indexNote) {
+    return /*html*/`
+        <p>+ ${notes[indexNote]}</p>`       // styling
+}
 
 
 // notizen hinzufügen
