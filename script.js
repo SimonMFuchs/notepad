@@ -1,4 +1,5 @@
 let notes = ['banana', 'rasen mähen'];
+let archive = [];
 
 function renderNotes() {
 
@@ -13,7 +14,7 @@ function renderNotes() {
 
 function getNotesTemplate(indexNote) {
     return /*html*/`
-        <p id="${indexNote}" onclick="selectNote(${indexNote})">+ ${notes[indexNote]} 
+        <p>+ ${notes[indexNote]} 
             <button onclick="deleteNote(${indexNote})">X</button>
         </p>
 
@@ -32,26 +33,58 @@ function addNote() {
 }
 
 function deleteNote(indexNote) {
+    pushArchive(indexNote)
     notes.splice(indexNote, 1);
     renderNotes();
 }
+
+// notiven archivieren
+// beim löschen in ein neues array pushen
+// archiv anzeigen lassen
+
+function pushArchive(indexNote){
+    let noteArchived = notes[indexNote];
+    archive.push(noteArchived);
+    renderArchive();
+}
+
+function renderArchive(){
+
+    let archiveContentRef = document.getElementById('archive-content');
+            
+    archiveContentRef.innerHTML = "";
+
+    for (let indexArchive = 0; indexArchive < archive.length; indexArchive++) {
+        archiveContentRef.innerHTML += getArchiveTemplate(indexArchive);
+    }
+}
+
+function getArchiveTemplate(indexArchive){
+    return /*html*/`
+        <p>+ ${archive[indexArchive]}</p>
+    `
+}
+
+
+
 // für Auswahl zum löschen:
 // function selectNote(indexNote){
 //     let clickedNote = document.getElementById(indexNote);
-//     deselectNote();
+//     let button = document.getElementById("btn"+indexNote);
+//     deselectNote(button);
 //     clickedNote.classList.add("note-selected");
+//     button.classList.remove('d-none');
 // }
 
-// function deselectNote(){
+// function deselectNote(button){
 //     for (let i = 0; i < notes.length; i++) {
-//         const note = document.getElementById([i]);
-//         note.classList.remove('note-selected');        
+//         const note = document.getElementById(i);
+//         note.classList.remove('note-selected');
+//         button.classList.add('d-none')        
 //     }
 // }
 
 
-
-
-
-
-// notiven archivieren
+// id="btn${indexNote}" class="d-none" 
+// id="${indexNote}" 
+// onclick="selectNote(${indexNote})"

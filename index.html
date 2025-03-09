@@ -14,14 +14,15 @@
 <body onload="renderNotes()">
     
     <h1>Notizblock</h1>
+    <input id="note-input" type="text" placeholder="Notiz eingeben...">
+    <button onclick="addNote()">Hinzufügen</button>
     <div id="content">
 
     </div>
 
-    <input id="note-input" type="text" placeholder="Notiz eingeben...">
-    <button onclick="addNote()">Hinzufügen</button>
-    <!-- <br>
-    <br>
-    <button onclick="deleteNote(indexNote)">Auswahl löschen</button> -->
+    <h2>Archive:</h2>
+    <div id="archive-content"></div>
+
+
 </body>
 </html>
