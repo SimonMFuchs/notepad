@@ -12,42 +12,6 @@ function renderNotes() {
     }
 }
 
-function getNotesTemplate(indexNote) {
-    return /*html*/`
-        <p>+ ${notes[indexNote]} 
-            <button onclick="deleteNote(${indexNote})">X</button>
-        </p>
-
-    `      
-}
-
-function addNote() {
-    let noteInputRef = document.getElementById('note-input');
-    let noteInput = noteInputRef.value;
-
-    notes.push(noteInput);
-
-    renderNotes();
-
-    noteInputRef.value = "";
-}
-
-function deleteNote(indexNote) {
-    pushArchive(indexNote)
-    notes.splice(indexNote, 1);
-    renderNotes();
-}
-
-// notiven archivieren
-// beim löschen in ein neues array pushen
-// archiv anzeigen lassen
-
-function pushArchive(indexNote){
-    let noteArchived = notes[indexNote];
-    archive.push(noteArchived);
-    renderArchive();
-}
-
 function renderArchive(){
 
     let archiveContentRef = document.getElementById('archive-content');
@@ -59,13 +23,42 @@ function renderArchive(){
     }
 }
 
-function getArchiveTemplate(indexArchive){
-    return /*html*/`
-        <p>+ ${archive[indexArchive]}</p>
-    `
+function addNote() {
+    let noteInputRef = document.getElementById('note-input');
+    let noteInput = noteInputRef.value;
+
+    if (!noteInput.length > 0) {
+        alert('Notiz eingeben!')        
+    } else {
+        notes.push(noteInput);
+        renderNotes();
+        noteInputRef.value = "";
+    }
 }
 
+function checkInputLength(noteInput){
 
+}
+
+function noteToTrash(indexNote) {
+    let noteArchived = notes.splice(indexNote, 1);
+    archive.push(noteArchived);
+    renderNotes();
+    renderArchive();
+}
+
+function deleteFromTrash(indexArchive) {
+    archive.splice(indexArchive, 1);
+    renderArchive();
+}
+
+function toggleOverlay(){
+    document.getElementById('overlay-background').classList.toggle('d-none');
+}
+
+function prevent(event) {
+    event.stopPropagation();
+}
 
 // für Auswahl zum löschen:
 // function selectNote(indexNote){

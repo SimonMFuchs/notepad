@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notizblock</title>
-    
+
     <script src="./script.js"></script>
+    <script src="./scripts/templates.js"></script>
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
 </head>
 
 <body onload="renderNotes()">
+    <section class="top">
+        <h1>Notizblock</h1>
+    </section>
+
+    <section class="main-content">
+        <input id="note-input" type="text" placeholder="Notiz eingeben...">
+        <button onclick="addNote()">Hinzufügen</button>
+        <div id="content"></div>
     
-    <h1>Notizblock</h1>
-    <input id="note-input" type="text" placeholder="Notiz eingeben...">
-    <button onclick="addNote()">Hinzufügen</button>
-    <div id="content">
+        <div id="overlay-background" class="d-none" onclick="toggleOverlay()">
+            <div id="overlay" onclick="prevent(event)">
+                <h2 onclick="toggleOverlay()">Archiv:</h2>
+                <div id="archive-content"></div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-
-    <h2>Archive:</h2>
-    <div id="archive-content"></div>
-
-
+    <section class="bottom">
+        <button id="archive-btn" onclick="toggleOverlay()">Archiv öffnen</button>
+    </section>
 </body>
+
 </html>

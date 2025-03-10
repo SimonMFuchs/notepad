@@ -5,8 +5,13 @@
 }
 
 body {
+    margin: 0;
     background-color: rgb(30, 30, 30);
     color: rgb(186, 246, 186);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }
 
 a {
