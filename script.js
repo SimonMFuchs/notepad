@@ -1,5 +1,9 @@
+let notesTitles = ['Ba', 'Aufgabe'];
 let notes = ['banana', 'rasen mähen'];
+
+let archiveTitles = [];
 let archive = [];
+
 
 function renderNotes() {
 
@@ -43,6 +47,8 @@ function checkInputLength(noteInput){
 function noteToTrash(indexNote) {
     let noteArchived = notes.splice(indexNote, 1);
     archive.push(noteArchived);
+    let noteArchivedTitles = notesTitles.splice(indexNote, 1);
+    archiveTitles.push(noteArchivedTitles);
     renderNotes();
     renderArchive();
 }

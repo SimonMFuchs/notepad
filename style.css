@@ -46,12 +46,16 @@ p:hover {
     min-width: 70vw;
     border: 1px solid;
     border-radius: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
 
 .main-content {
     min-height: 70vh;
     padding: 32px;
+}
+
+.note-content {
+    padding: 8px 16px;
 }
 
 .bottom, .top {
