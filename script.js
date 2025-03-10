@@ -37,15 +37,18 @@ function renderArchive(){
 
 function addNote() {
     let noteInputRef = document.getElementById('note-input');
+    let noteTitleInputRef = document.getElementById('note-title-input');
     let noteInput = noteInputRef.value;
+    let noteTitleInput = noteTitleInputRef.value;
 
-    if (!noteInput.length > 0) {
-        alert('Notiz eingeben!')        
+    if (!noteInput.length > 0 || !noteTitleInput.length > 0) {
+        alert('Notiz und Titel eingeben!')        
     } else {
         notes.push(noteInput);
-        notesTitles.push("");
+        notesTitles.push(noteTitleInput);
         renderNotes();
         noteInputRef.value = "";
+        noteTitleInputRef.value = "";
     }
 }
 
