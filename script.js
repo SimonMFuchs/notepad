@@ -1,11 +1,19 @@
-let notesTitles = ['Ba', 'Aufgabe'];
+let notesTitles = ['', ''];
 let notes = ['banana', 'rasen mähen'];
 
-let archiveTitles = [];
-let archive = [];
+let archiveTitles = [''];
+let archive = ['test'];
 
+function init(){
+    getNotesFromLocalStorage()
+    renderNotes();
+    renderArchive();
+}
 
-function renderNotes() {
+function renderNotes(){
+
+    saveNotesToLocalStorage();
+    saveNotesTitlesToLocalStorage();
 
     let contentRef = document.getElementById('content');
 
@@ -35,22 +43,19 @@ function addNote() {
         alert('Notiz eingeben!')        
     } else {
         notes.push(noteInput);
+        notesTitles.push("");
         renderNotes();
         noteInputRef.value = "";
     }
 }
 
-function checkInputLength(noteInput){
-
-}
-
-function noteToTrash(indexNote) {
+function noteToArchive(indexNote) {
     let noteArchived = notes.splice(indexNote, 1);
     archive.push(noteArchived);
     let noteArchivedTitles = notesTitles.splice(indexNote, 1);
     archiveTitles.push(noteArchivedTitles);
+    renderArchive();    
     renderNotes();
-    renderArchive();
 }
 
 function deleteFromTrash(indexArchive) {
@@ -65,6 +70,44 @@ function toggleOverlay(){
 function prevent(event) {
     event.stopPropagation();
 }
+
+
+
+function saveNotesToLocalStorage(){
+    localStorage.setItem("notesStorage", JSON.stringify(notes));
+}
+
+function saveNotesTitlesToLocalStorage(){
+    localStorage.setItem("notesTitlesStorage", JSON.stringify(notesTitles));
+}
+
+// function saveArchiveToLocalStorage(){
+//     console.log(archive);   
+//     localStorage.setItem("archiveStorage", JSON.stringify(archive));
+// }
+
+function getNotesFromLocalStorage(){
+    let notesLocal = JSON.parse(localStorage.getItem("notesStorage"));
+    let notesTitlesLocal = JSON.parse(localStorage.getItem("notesTitlesStorage"))
+
+    if (!notesLocal == ""){
+        notes = notesLocal;
+    }
+    if (!notesTitlesLocal == ""){
+        notesTitles = notesTitlesLocal;
+    }
+}
+
+// function getArchiveFromLocalStorage(){
+//     let archiveLocal = JSON.parse(localStorage.getItem("archiveStorage"));
+
+//     if (!archiveLocal == ""){
+//         archive = archiveLocal;
+//     }
+// }
+
+
+
 
 // für Auswahl zum löschen:
 // function selectNote(indexNote){

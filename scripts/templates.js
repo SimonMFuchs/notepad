@@ -2,7 +2,7 @@ function getNotesTemplate(indexNote) {
     return /*html*/`
         <p>
             + Title: ${notesTitles[indexNote]} -> ${notes[indexNote]} 
-            <button onclick="noteToTrash(${indexNote})">X</button>
+            <button onclick="noteToArchive(${indexNote})">X</button>
         </p>
     `
 }
