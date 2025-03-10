@@ -1,0 +1,11 @@
+.btn {
+    background-color: rgb(186, 246, 186);;
+    font-weight: 700;
+    border-color: rgb(186, 246, 186);;
+    border-style: solid;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-color: rgb(204, 237, 204);
+}

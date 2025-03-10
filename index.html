@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notizblock</title>
 
-    <script src="./script.js"></script>
     <script src="./scripts/templates.js"></script>
+    <script src="./script.js"></script>
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/assets.css">
 </head>
 
 <body onload="init()">
@@ -21,7 +22,7 @@
     <section class="main-content">
         <input id="note-title-input" type="text" placeholder="Titel eingeben...">
         <input id="note-input" type="text" placeholder="Notiz eingeben...">
-        <button onclick="addNote()">Hinzufügen</button>
+        <button class="btn" onclick="addNote()">Hinzufügen</button>
         <div id="content"></div>
     
         <div id="overlay-background" class="d-none" onclick="toggleOverlay()">
@@ -33,7 +34,8 @@
     </section>
 
     <section class="bottom">
-        <button id="archive-btn" onclick="toggleOverlay()">Archiv öffnen</button>
+        <button class="btn" id="archive-btn" onclick="toggleOverlay()">Archiv öffnen</button>
+        <button class="btn" id="trash-btn" onclick="toggleTrashOverlay()">Papierkorp öffnen</button>
     </section>
 </body>
 

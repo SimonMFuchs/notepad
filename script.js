@@ -1,11 +1,12 @@
-let notesTitles = ['', ''];
+let notesTitles = ['Einkaufen', 'Gartenarbeit'];
 let notes = ['banana', 'rasen mähen'];
 
-let archiveTitles = [''];
-let archive = ['test'];
+let archiveTitles = ['Wäschewaschen'];
+let archive = ['Buntwäsche'];
 
 function init(){
-    getNotesFromLocalStorage()
+    getNotesFromLocalStorage();
+    getArchiveFromLocalStorage()
     renderNotes();
     renderArchive();
 }
@@ -53,10 +54,13 @@ function addNote() {
 }
 
 function noteToArchive(indexNote) {
-    let noteArchived = notes.splice(indexNote, 1);
+    let noteArchived = notes[indexNote]; 
+    notes.splice(indexNote, 1);
     archive.push(noteArchived);
+    console.log(archive);
     let noteArchivedTitles = notesTitles.splice(indexNote, 1);
     archiveTitles.push(noteArchivedTitles);
+    saveArchiveToLocalStorage()
     renderArchive();    
     renderNotes();
 }
@@ -84,10 +88,10 @@ function saveNotesTitlesToLocalStorage(){
     localStorage.setItem("notesTitlesStorage", JSON.stringify(notesTitles));
 }
 
-// function saveArchiveToLocalStorage(){
-//     console.log(archive);   
-//     localStorage.setItem("archiveStorage", JSON.stringify(archive));
-// }
+function saveArchiveToLocalStorage(){
+    localStorage.setItem("archiveStorage", JSON.stringify(archive));
+    localStorage.setItem("archiveTitlesStorage", JSON.stringify(archiveTitles));
+}
 
 function getNotesFromLocalStorage(){
     let notesLocal = JSON.parse(localStorage.getItem("notesStorage"));
@@ -101,35 +105,14 @@ function getNotesFromLocalStorage(){
     }
 }
 
-// function getArchiveFromLocalStorage(){
-//     let archiveLocal = JSON.parse(localStorage.getItem("archiveStorage"));
+function getArchiveFromLocalStorage(){
+    let archiveLocal = JSON.parse(localStorage.getItem("archiveStorage"));
+    let archiveTitlesLocal = JSON.parse(localStorage.getItem("archiveTitlesStorage"));
 
-//     if (!archiveLocal == ""){
-//         archive = archiveLocal;
-//     }
-// }
-
-
-
-
-// für Auswahl zum löschen:
-// function selectNote(indexNote){
-//     let clickedNote = document.getElementById(indexNote);
-//     let button = document.getElementById("btn"+indexNote);
-//     deselectNote(button);
-//     clickedNote.classList.add("note-selected");
-//     button.classList.remove('d-none');
-// }
-
-// function deselectNote(button){
-//     for (let i = 0; i < notes.length; i++) {
-//         const note = document.getElementById(i);
-//         note.classList.remove('note-selected');
-//         button.classList.add('d-none')        
-//     }
-// }
-
-
-// id="btn${indexNote}" class="d-none" 
-// id="${indexNote}" 
-// onclick="selectNote(${indexNote})"
+    if (!archiveLocal == ""){
+        archive = archiveLocal;
+    }
+    if (!archiveTitlesLocal == ""){
+        archiveTitles = archiveTitlesLocal;
+    }
+}
