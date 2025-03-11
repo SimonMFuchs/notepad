@@ -1,11 +1,18 @@
 .btn {
     background-color: rgb(186, 246, 186);;
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 18px;
     border-color: rgb(186, 246, 186);;
     border-style: solid;
+    padding: 8px 16px;
 }
 
 .btn:hover{
     cursor: pointer;
     background-color: rgb(204, 237, 204);
+}
+
+.input {
+    font-size: 18px;
+    padding: 8px 16px;
 }

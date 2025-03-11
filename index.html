@@ -12,36 +12,37 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/assets.css">
+    <link rel="stylesheet" href="./styles/note.css">
 </head>
 
 <body onload="init()">
-    <section class="top">
+    <section class="top maximum-width">
         <h1>Notizblock</h1>
     </section>
 
-    <section class="main-content">
-        <input id="note-title-input" type="text" placeholder="Titel eingeben...">
-        <input id="note-input" type="text" placeholder="Notiz eingeben...">
-        <button class="btn" onclick="addNote()">Hinzufügen</button>
-        <div id="content"></div>
+    <section class="main-content maximum-width">
+        <input id="note-title-input" class="input" type="text" placeholder="Titel eingeben...">
+        <input id="note-input" class="input" type="text" placeholder="Text eingeben...">
+        <button class="btn" onclick="addNote()">Notiz hinzufügen</button>
+        <div id="note-content"></div>
     
         <div id="overlay-background" class="d-none" onclick="toggleOverlay()">
-            <div id="overlay" onclick="prevent(event)">
+            <div id="overlay" class="maximum-width" onclick="prevent(event)">
                 <h2>Archiv:</h2>
                 <div id="archive-content"></div>
             </div>
         </div>
 
         <div id="overlay-trash-background" class="d-none" onclick="toggleOverlayTrash()">
-            <div id="overlay-trash" onclick="prevent(event)">
-                <h2>Trash:</h2>
+            <div id="overlay-trash" class="maximum-width" onclick="prevent(event)">
+                <h2>Papierkorp:</h2>
                 <div id="trash-content"></div>
             </div>
         </div>
         
     </section>
 
-    <section class="bottom">
+    <section class="bottom maximum-width">
         <button class="btn" id="archive-btn" onclick="toggleOverlay()">Archiv öffnen</button>
         <button class="btn" id="trash-btn" onclick="toggleOverlayTrash()">Papierkorp öffnen</button>
     </section>

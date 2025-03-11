@@ -1,8 +1,8 @@
 function getNotesTemplate(indexNote) {
     return /*html*/`
         <p>
-            + Title: ${notesTitles[indexNote]} -> ${notes[indexNote]} 
-            <button onclick="noteToArchive(${indexNote})">X</button>
+            ⚪ ${notesTitles[indexNote]} : ${notes[indexNote]} 
+            <button class="btn" onclick="noteToArchive(${indexNote})">X</button>
         </p>
     `
 }
@@ -10,8 +10,17 @@ function getNotesTemplate(indexNote) {
 function getArchiveTemplate(indexArchive) {
     return /*html*/`
         <p>
-            + Title: ${archiveTitles[indexArchive]} -> ${archive[indexArchive]}
-            <button onclick="moveToTrash(${indexArchive})">Löschen</button>
+            ⚪ ${archiveTitles[indexArchive]} : ${archive[indexArchive]}
+            <button class="btn" onclick="moveToTrash(${indexArchive})">X</button>
+        </p>
+    `
+}
+
+function getTrashTemplate(indexTrash) {
+    return /*html*/`
+        <p>
+            🗑️ ${trashTitles[indexTrash]} : ${trash[indexTrash]}
+            <button class="btn" onclick="deleteForever(${indexTrash})">Löschen</button>
         </p>
     `
 }

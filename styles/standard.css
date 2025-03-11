@@ -16,13 +16,20 @@ body {
 
 h1 {
     color: rgb(186, 246, 186);;
+    font-size: 48px;
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 32px;
+    color: rgb(186, 246, 186);
 }
 
 a {
     text-decoration: none;
 }
 
-p {
-    padding: 8px 16px;
+.maximum-width {
+    max-width: 1024px;
+    margin: auto;
 }
-
