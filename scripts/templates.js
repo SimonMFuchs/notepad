@@ -11,7 +11,7 @@ function getArchiveTemplate(indexArchive) {
     return /*html*/`
         <p>
             + Title: ${archiveTitles[indexArchive]} -> ${archive[indexArchive]}
-            <button onclick="deleteFromTrash(${indexArchive})">Löschen</button>
+            <button onclick="moveToTrash(${indexArchive})">Löschen</button>
         </p>
     `
 }

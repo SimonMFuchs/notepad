@@ -6,7 +6,7 @@ p:hover {
     display: none;
 }
 
-#overlay-background {
+#overlay-background, #overlay-trash {
     position: absolute;
     top: 0;
     left: 0;
@@ -15,7 +15,7 @@ p:hover {
     background-color: rgba(1, 1, 1, 0.5);
 }
 
-#overlay {
+#overlay, #overlay-trash {
     width: 75vw;
     display: flex;
     flex-direction: column;

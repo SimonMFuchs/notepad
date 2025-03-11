@@ -27,15 +27,23 @@
     
         <div id="overlay-background" class="d-none" onclick="toggleOverlay()">
             <div id="overlay" onclick="prevent(event)">
-                <h2 onclick="toggleOverlay()">Archiv:</h2>
+                <h2>Archiv:</h2>
                 <div id="archive-content"></div>
             </div>
         </div>
+
+        <div id="overlay-trash-background" class="d-none" onclick="toggleOverlayTrash()">
+            <div id="overlay-trash" onclick="prevent(event)">
+                <h2>Trash:</h2>
+                <div id="trash-content"></div>
+            </div>
+        </div>
+        
     </section>
 
     <section class="bottom">
         <button class="btn" id="archive-btn" onclick="toggleOverlay()">Archiv öffnen</button>
-        <button class="btn" id="trash-btn" onclick="toggleTrashOverlay()">Papierkorp öffnen</button>
+        <button class="btn" id="trash-btn" onclick="toggleOverlayTrash()">Papierkorp öffnen</button>
     </section>
 </body>
 

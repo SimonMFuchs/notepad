@@ -4,6 +4,9 @@ let notes = ['banana', 'rasen mähen'];
 let archiveTitles = ['Wäschewaschen'];
 let archive = ['Buntwäsche'];
 
+let trashTitles = [];
+let trash = [];
+
 function init(){
     getNotesFromLocalStorage();
     getArchiveFromLocalStorage()
@@ -36,6 +39,11 @@ function renderArchive(){
     }
 }
 
+function renderTrash(){
+    let trashContentRef = document.getElementById('trash-content');
+
+}
+
 function addNote() {
     let noteInputRef = document.getElementById('note-input');
     let noteTitleInputRef = document.getElementById('note-title-input');
@@ -57,28 +65,36 @@ function noteToArchive(indexNote) {
     let noteArchived = notes[indexNote]; 
     notes.splice(indexNote, 1);
     archive.push(noteArchived);
-    console.log(archive);
+    console.log(notesTitles);
     let noteArchivedTitles = notesTitles.splice(indexNote, 1);
+    console.log(notesTitles);
+    console.log(archiveTitles);
     archiveTitles.push(noteArchivedTitles);
+    console.log(archiveTitles);
     saveArchiveToLocalStorage()
     renderArchive();    
     renderNotes();
 }
 
-function deleteFromTrash(indexArchive) {
+function moveToTrash(indexArchive) {
+    let noteDiscarded = notes[indexNote];
     archive.splice(indexArchive, 1);
+    trash.push(noteDiscarded);
     renderArchive();
+    renderTrash();
 }
 
 function toggleOverlay(){
     document.getElementById('overlay-background').classList.toggle('d-none');
 }
 
+function toggleOverlayTrash(){
+    document.getElementById('overlay-trash-background').classList.toggle('d-none');
+}
+
 function prevent(event) {
     event.stopPropagation();
 }
-
-
 
 function saveNotesToLocalStorage(){
     localStorage.setItem("notesStorage", JSON.stringify(notes));
