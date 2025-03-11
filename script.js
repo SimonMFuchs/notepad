@@ -1,9 +1,7 @@
 let notesTitles = ['Einkaufen', 'Gartenarbeit'];
 let notes = ['Bananen, Spaghetti und Haferflocken', 'rasen mähen'];
-
 let archiveTitles = ['Wäschewaschen'];
 let archive = ['Buntwäsche'];
-
 let trashTitles = [];
 let trash = [];
 
@@ -17,12 +15,9 @@ function init(){
 }
 
 function renderNotes(){
-
     saveNotesToLocalStorage();
     saveNotesTitlesToLocalStorage();
-
     let contentRef = document.getElementById('note-content');
-
     contentRef.innerHTML = "";
 
     for (let indexNote = 0; indexNote < notes.length; indexNote++) {
@@ -31,11 +26,8 @@ function renderNotes(){
 }
 
 function renderArchive(){
-
     saveArchiveToLocalStorage();
-
     let archiveContentRef = document.getElementById('archive-content');
-            
     archiveContentRef.innerHTML = "";
 
     for (let indexArchive = 0; indexArchive < archive.length; indexArchive++) {
@@ -44,17 +36,13 @@ function renderArchive(){
 }
 
 function renderTrash(){
-
     saveTrashToLocalStorage();
-
     let trashContentRef = document.getElementById('trash-content');
-
     trashContentRef.innerHTML ="";
 
     for (let indexTrash = 0; indexTrash < trash.length; indexTrash++) {
         trashContentRef.innerHTML += getTrashTemplate(indexTrash);
     }
-
 }
 
 function addNote() {
@@ -78,13 +66,9 @@ function noteToArchive(indexNote) {
     let noteArchived = notes[indexNote]; 
     notes.splice(indexNote, 1);
     archive.push(noteArchived);
-    console.log(notesTitles);
     let noteArchivedTitles = notesTitles[indexNote];
     notesTitles.splice(indexNote, 1);
-    console.log(notesTitles);
-    console.log(archiveTitles);
     archiveTitles.push(noteArchivedTitles);
-    console.log(archiveTitles);
     saveArchiveToLocalStorage()
     renderArchive();    
     renderNotes();
