@@ -16,9 +16,9 @@ function moveNote(indexNote, startKey, destinationKey){
 }
 
 function renderAllNotes(){
-    renderNotes();
-    renderArchive();
-    renderTrash();
+    renderNotes('note-content', 'notes');
+    renderNotes('archive-content', 'archive');
+    renderNotes('trash-content', 'trash');
 }
 
 function init(){
@@ -28,33 +28,22 @@ function init(){
     renderAllNotes()
 }
 
-function renderNotes(){
+function renderNotes(id, arr){
     saveNotesToLocalStorage();
-    let contentRef = document.getElementById('note-content');
-    contentRef.innerHTML = "";
-
-    for (let indexNote = 0; indexNote < allNotes.notes.length; indexNote++) {
-        contentRef.innerHTML += getNotesTemplate(indexNote);
-    }
-}
-
-function renderArchive(){
     saveArchiveToLocalStorage();
-    let archiveContentRef = document.getElementById('archive-content');
-    archiveContentRef.innerHTML = "";
-
-    for (let indexArchive = 0; indexArchive < allNotes.archive.length; indexArchive++) {
-        archiveContentRef.innerHTML += getArchiveTemplate(indexArchive);
-    }
-}
-
-function renderTrash(){
     saveTrashToLocalStorage();
-    let trashContentRef = document.getElementById('trash-content');
-    trashContentRef.innerHTML ="";
+    let contentRef = document.getElementById(id);
+    contentRef.innerHTML = "";
+    let keyArr = allNotes[arr];
 
-    for (let indexTrash = 0; indexTrash < allNotes.trash.length; indexTrash++) {
-        trashContentRef.innerHTML += getTrashTemplate(indexTrash);
+    for (let indexNote = 0; indexNote < keyArr.length; indexNote++) {
+        if (id == 'note-content') {
+            contentRef.innerHTML += getNotesTemplate(indexNote);
+        } else if(id == 'archive-content') {
+            contentRef.innerHTML += getArchiveTemplate(indexNote);
+        } else if (id == 'trash-content') {
+            contentRef.innerHTML += getTrashTemplate(indexNote);
+        }
     }
 }
 
@@ -69,7 +58,7 @@ function addNote() {
     } else {
         allNotes.notes.push(noteInput);
         allNotes.notesTitles.push(noteTitleInput);
-        renderNotes();
+        renderNotes('note-content', 'notes');
         noteInputRef.value = "";
         noteTitleInputRef.value = "";
     }
@@ -78,7 +67,7 @@ function addNote() {
 function deleteForever(indexTrash){
     allNotes.trash.splice(indexTrash, 1);
     allNotes.trashTitles.splice(indexTrash, 1);
-    renderTrash();
+    renderNotes('trash-content', 'trash');
 }
 
 function toggleOverlay(){
