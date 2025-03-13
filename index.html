@@ -23,9 +23,11 @@
     </section>
 
     <section class="main-content maximum-width">
-        <input id="note-title-input" class="input" type="text" placeholder="Titel eingeben...">
-        <input id="note-input" class="input" type="text" placeholder="Text eingeben...">
-        <button class="btn" onclick="addNote()">Notiz hinzufügen</button>
+        <div class="add-note-content">
+            <input id="note-title-input" class="input" type="text" placeholder="Titel eingeben...">
+            <input id="note-input" class="input" type="text" placeholder="Text eingeben...">
+            <button class="btn" onclick="addNote()">Notiz hinzufügen</button>
+        </div>
         <div id="note-content"></div>
     
         <div id="overlay-background" class="d-none" onclick="toggleOverlay()">
@@ -44,7 +46,7 @@
         
     </section>
 
-    <section class="bottom maximum-width">
+    <section class="bottom">
         <button class="btn" id="archive-btn" onclick="toggleOverlay()">Archiv öffnen</button>
         <button class="btn" id="trash-btn" onclick="toggleOverlayTrash()">Papierkorp öffnen</button>
     </section>
