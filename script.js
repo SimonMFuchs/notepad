@@ -37,12 +37,18 @@ function renderNotes(id, arr){
     let keyArr = allNotes[arr];
 
     for (let indexNote = 0; indexNote < keyArr.length; indexNote++) {
-        if (id == 'note-content') {
-            contentRef.innerHTML += getNotesTemplate(indexNote);
-        } else if(id == 'archive-content') {
-            contentRef.innerHTML += getArchiveTemplate(indexNote);
-        } else if (id == 'trash-content') {
-            contentRef.innerHTML += getTrashTemplate(indexNote);
+        switch (id) {
+            case 'note-content':
+                contentRef.innerHTML += getNotesTemplate(indexNote);
+                break;
+            case 'archive-content':
+                contentRef.innerHTML += getArchiveTemplate(indexNote);
+                break;
+            case 'trash-content': 
+                contentRef.innerHTML += getTrashTemplate(indexNote);
+                break;
+            default:
+                console.warn(`Unbekannter ID-Wert: ${id}`);
         }
     }
 }
